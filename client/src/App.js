@@ -1,6 +1,5 @@
-// src/App.js
 import React, { useState, useEffect } from 'react';
-import axios from 'axios'; // Import axios for HTTP requests
+import axios from 'axios';
 import Banner from './components/Banner';
 import Dashboard from './components/Dashboard';
 import Countdown from './components/Countdown';
@@ -16,19 +15,17 @@ const App = () => {
 
   const [showBanner, setShowBanner] = useState(bannerSettings.isVisible);
 
-  // Fetch initial banner settings from the backend
   useEffect(() => {
     axios.get('http://localhost:5000/api/data')
       .then((response) => {
         if (response.data.length > 0) {
-          setBannerSettings(response.data[0]); // Assuming one record
+          setBannerSettings(response.data[0]);
           setShowBanner(response.data[0].isVisible);
         }
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
-  // Update banner visibility and timer
   useEffect(() => {
     if (bannerSettings.isVisible) {
       setShowBanner(true);
@@ -52,8 +49,7 @@ const App = () => {
   const handleUpdateSettings = (updatedSettings) => {
     setBannerSettings(updatedSettings);
 
-    // Update settings in the backend
-    axios.put('http://localhost:5000/api/data/1', updatedSettings) // Assuming ID = 1 for update
+    axios.put('http://localhost:5000/api/data/1', updatedSettings)
       .then((response) => console.log('Update successful:', response.data))
       .catch((error) => console.error('Error updating data:', error));
   };
@@ -69,7 +65,7 @@ const App = () => {
         />
       )}
       <Dashboard
-        setBannerSettings={handleUpdateSettings} // Pass function to update settings
+        setBannerSettings={handleUpdateSettings}
         bannerSettings={bannerSettings}
       />
     </div>

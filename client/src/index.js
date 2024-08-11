@@ -1,11 +1,9 @@
-// src/index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';      // Import global CSS styles
-import App from './App';   // Import the main App component
-import reportWebVitals from './reportWebVitals'; // Optional: For measuring performance
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-// Render the App component into the root element of the HTML
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -13,5 +11,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// Optional: For measuring performance
 reportWebVitals();

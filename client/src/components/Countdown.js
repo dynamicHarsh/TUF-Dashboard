@@ -1,4 +1,3 @@
-// src/components/Countdown.js
 import React, { useEffect, useState } from 'react';
 import '../styles/Banner.css';
 

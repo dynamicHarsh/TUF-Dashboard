@@ -1,6 +1,5 @@
-// src/components/Dashboard.js
 import React, { useState } from 'react';
-import axios from 'axios'; // Import axios for HTTP requests
+import axios from 'axios';
 import '../styles/Dashboard.css';
 
 const Dashboard = ({ setBannerSettings, bannerSettings }) => {
@@ -9,15 +8,30 @@ const Dashboard = ({ setBannerSettings, bannerSettings }) => {
   const [link, setLink] = useState(bannerSettings.link);
   const [isVisible, setIsVisible] = useState(bannerSettings.isVisible);
 
+  const ensureHttps = (url) => {
+    if (!/^https?:\/\//i.test(url)) {
+      return `https://${url}`;
+    }
+    return url;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updatedSettings = { description, time: time, link, isVisible };
+    
+    const updatedSettings = { 
+      description, 
+      time, 
+      link: ensureHttps(link), 
+      isVisible 
+    };
 
-    // Update settings in the backend
-    axios.put('http://localhost:5000/api/data/1', updatedSettings) // Assuming ID = 1 for update
+    axios.put('http://localhost:5000/api/data/1', updatedSettings)
       .then((response) => {
-        console.log('Update successful:', response.data);
-        setBannerSettings(updatedSettings); // Update state with the new settings
+        setBannerSettings(updatedSettings);
+        setDescription('');
+        setTime('');
+        setLink('');
+        setIsVisible(false);
       })
       .catch((error) => console.error('Error updating data:', error));
   };

@@ -1,14 +1,12 @@
-// backend/index.js
 const express = require('express');
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-require('dotenv').config(); // Load environment variables
+require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-// MySQL connection
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -32,7 +30,6 @@ app.get('/', (req, res) => {
   res.send('Server is up and running!');
 });
 
-// Routes
 app.get('/api/data', (req, res) => {
   const query = `SELECT * FROM ${process.env.DB_TABLE}`;
   db.query(query, (err, results) => {
