@@ -28,6 +28,10 @@ db.connect((err) => {
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+  res.send('Server is up and running!');
+});
+
 // Routes
 app.get('/api/data', (req, res) => {
   const query = `SELECT * FROM ${process.env.DB_TABLE}`;
