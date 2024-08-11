@@ -1,0 +1,32 @@
+/* src/styles/App.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../../public/cover.png'); /* Add your background image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Ensure full viewport height */
+    overflow: hidden; /* Prevent scrollbars from appearing */
+    display: flex; /* Enable flexbox */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+  }
+  
+  /* Apply glassmorphism effect */
+  .container {
+    max-width: 1200px;
+    width: 67vw; /* Set width to 70% of viewport width */
+    /* min-width: 70vw; Ensure the container is at least 70% of viewport width */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1); /* Slight white background with transparency */
+    backdrop-filter: blur(10px); /* Apply the blur effect */
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Ensure children are stacked vertically */
+    align-items: center; /* Center children horizontally */
+  }
+  

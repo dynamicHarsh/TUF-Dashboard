@@ -1,0 +1,58 @@
+/* src/styles/Banner.css */
+
+.banner {
+    background-image: url('../../public/tuf.png'); /* Add the background image URL */
+    background-size: cover; /* Cover the entire banner */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    padding: 20px;
+    width: 65vw;
+    text-align: center;
+    position: relative;
+    border-radius: 12px 12px 0 0;
+    color: white; /* Set text color to white */
+  }
+  
+  .banner a {
+    text-decoration: none;
+    color: white; /* Set link color to white */
+  }
+  
+  .countdown {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .switch { 
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+    background-color: #eee;
+    border-radius: 20px;
+  }
+  
+  .switch::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: white;
+    top: 1px; 
+    left: 1px;
+    transition: all 0.3s;
+  }
+  
+  .checkbox:checked + .switch::after {
+    left: 20px; 
+  }
+  
+  .checkbox:checked + .switch {
+    background-color: #f7567c;
+  }
+  
+  .checkbox { 
+    display: none;
+  }
+  
