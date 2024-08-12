@@ -79,3 +79,9 @@ input:focus, textarea:focus {
 .button:focus:not(:active) {
   box-shadow: rgb(254, 154, 178) 0 0 0 .125em;
 }
+
+
+.dashboard input::placeholder {
+  color: lightgrey; 
+  opacity: 1; 
+}

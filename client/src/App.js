@@ -10,13 +10,13 @@ const App = () => {
     description: '',
     time: 0,
     link: '',
-    isVisible: false,
+    isVisible: true,
   });
 
   const [showBanner, setShowBanner] = useState(bannerSettings.isVisible);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/data')
+    axios.get('https://tuf-dashboard-iota.vercel.app/api/data')
       .then((response) => {
         if (response.data.length > 0) {
           setBannerSettings(response.data[0]);
@@ -49,7 +49,7 @@ const App = () => {
   const handleUpdateSettings = (updatedSettings) => {
     setBannerSettings(updatedSettings);
 
-    axios.put('http://localhost:5000/api/data/1', updatedSettings)
+    axios.put('https://tuf-dashboard-iota.vercel.app/api/data/1', updatedSettings)
       .then((response) => console.log('Update successful:', response.data))
       .catch((error) => console.error('Error updating data:', error));
   };

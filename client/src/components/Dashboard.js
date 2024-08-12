@@ -1,5 +1,5 @@
+
 import React, { useState } from 'react';
-import axios from 'axios';
 import '../styles/Dashboard.css';
 
 const Dashboard = ({ setBannerSettings, bannerSettings }) => {
@@ -17,7 +17,7 @@ const Dashboard = ({ setBannerSettings, bannerSettings }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     const updatedSettings = { 
       description, 
       time, 
@@ -25,19 +25,12 @@ const Dashboard = ({ setBannerSettings, bannerSettings }) => {
       isVisible 
     };
 
-    axios.put('http://localhost:5000/api/data/1', updatedSettings)
-      .then((response) => {
-        setBannerSettings(updatedSettings);
-        setDescription('');
-        setTime('');
-        setLink('');
-        setIsVisible(false);
-      })
-      .catch((error) => console.error('Error updating data:', error));
+    setBannerSettings(updatedSettings); // Update in App.js
   };
 
   const handleVisibilityChange = () => {
-    setIsVisible(!isVisible);
+    setIsVisible(prev => !prev); // Update locally
+    setBannerSettings({ ...bannerSettings, isVisible: !isVisible }); // Propagate to App.js
   };
 
   return (
@@ -69,7 +62,7 @@ const Dashboard = ({ setBannerSettings, bannerSettings }) => {
           />
         </div>
         <div>
-          <label>Show Banner:</label>
+          <label>Show/Hide Banner:</label>
           <input
             type="checkbox"
             id="toggle"

@@ -15,3 +15,4 @@ const Banner = ({ isVisible, description, time, link }) => {
 };
 
 export default Banner;
+
